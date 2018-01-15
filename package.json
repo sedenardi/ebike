@@ -1,0 +1,11 @@
+{
+  "name": "ebike",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "decimal.js": "^9.0.1",
+    "xml2js": "^0.4.19"
+  }
+}
