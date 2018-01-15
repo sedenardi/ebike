@@ -2,11 +2,15 @@ const fs = require('fs');
 const path = require('path');
 const promisify = require('util').promisify;
 const readFileAsync = promisify(fs.readFile);
+const writeFileAsync = promisify(fs.writeFile);
 const xml2js = require('xml2js');
 const parseStringAsync = promisify(xml2js.parseString);
 const Decimal = require('decimal.js');
 
-const filePath = path.join(__dirname, 'raw/20180111/activity_2430523815.gpx');
+const date = '20180111';
+const pathDir = path.join(__dirname, `raw/${date}`);
+const fileName = 'activity_2430523815.gpx';
+const filePath = path.join(pathDir, fileName);
 
 const zoneBoundingBox = {
   minLat: new Decimal('40.732529'),
@@ -68,11 +72,35 @@ const getRoutes = (coords) => {
   return routes;
 };
 
+const createGPX = async (originalGPX, route, idx) => {
+  const points = route.map((c) => {
+    return {
+      '$': {
+        lat: c.lat,
+        lon: c.lon
+      },
+      ele: [c.ele],
+      time: [c.time]
+    };
+  });
+  const newGPX = JSON.parse(JSON.stringify(originalGPX));
+  newGPX.gpx.trk[0].trkseg[0].trkpt = points;
+  const builder = new xml2js.Builder();
+  const xml = builder.buildObject(newGPX);
+  const newFile = path.join(pathDir, `${date}-${idx}.gpx`);
+  await writeFileAsync(newFile, xml);
+};
+
 const run = async () => {
   const gpx = await getGPX();
   const coords = parseToCoordinateArray(gpx.gpx);
   const routes = getRoutes(coords);
-  console.log(coords);
+  const actions = routes.map(async (r, i) => {
+    console.log(`Logging route #${i} with ${r.length} points`);
+    await createGPX(gpx, r, i);
+  });
+  await Promise.all(actions);
+  // console.log(coords);
 };
 
 run().catch(console.log);
