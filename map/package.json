@@ -1,5 +1,5 @@
 {
-  "name": "ebike/map",
+  "name": "@ebike/map",
   "version": "1.0.0",
   "private": true,
   "author": "Sanders DeNardi",
@@ -12,5 +12,9 @@
   "bugs": {
     "url": "https://github.com/sedenardi/ebike/issues"
   },
-  "homepage": "https://github.com/sedenardi/ebike"
+  "homepage": "https://github.com/sedenardi/ebike",
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.16.0"
+  }
 }

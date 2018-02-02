@@ -29,8 +29,8 @@ const parseToCoordinateArray = (gpx) => {
   return points.map((p, i) => {
     const ptObj = {
       id: i,
-      lat: p['$'].lat,
-      lon: p['$'].lon,
+      lat: p.$.lat,
+      lon: p.$.lon,
       ele: p.ele[0],
       time: p.time[0]
     };
@@ -75,7 +75,7 @@ const getRoutes = (coords) => {
 const createGPX = async (originalGPX, route, idx) => {
   const points = route.map((c) => {
     return {
-      '$': {
+      $: {
         lat: c.lat,
         lon: c.lon
       },
