@@ -1,2 +1,4 @@
-const appDiv = document.querySelector('#app');
-appDiv.textContent = 'App is loaded.';
+import Leaflet from 'leaflet';
+import mapping from './mapping';
+
+mapping.init(Leaflet);

@@ -14,7 +14,7 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'index.js',
+    filename: 'site.js',
   },
   // plugins: [new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' })]
 };
