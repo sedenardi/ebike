@@ -1,4 +1,6 @@
 import Leaflet from 'leaflet';
 import mapping from './mapping';
+import routes from './routes';
 
-mapping.init(Leaflet);
+const map = mapping.init(Leaflet);
+routes.init(map, Leaflet);

@@ -10,6 +10,10 @@ module.exports = {
         query: {
           presets: ['env']
         }
+      },
+      {
+        test: /\.(json|geojson)$/,
+        loader: 'json-loader'
       }
     ]
   },
