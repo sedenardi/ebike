@@ -1,6 +1,8 @@
+/* global L */
+
 import route_0 from '../../../gps/raw/20180111/20180111-filtered.geojson';
 
-const init = (map, L) => {
+const init = (map) => {
   let selected = null;
   const onEachFeature = (feature, layer) => {
     const content = `
@@ -24,7 +26,8 @@ const init = (map, L) => {
     layer.on({
 	    mouseover: function (e) {
         e.target.setStyle({
-          weight: 6
+          weight: 6,
+          opacity: 1
         });
         if (!L.Browser.ie && !L.Browser.opera) {
           e.target.bringToFront();
@@ -49,8 +52,8 @@ const init = (map, L) => {
   const geojson = L.geoJSON(route_0, {
     style: function () {
       return {
-        weight: 2,
-        opacity: 1,
+        weight: 4,
+        opacity: .6,
         color: 'blue'
       };
     },

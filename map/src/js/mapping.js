@@ -1,3 +1,5 @@
+/* global L */
+
 const mapCenter = [
   40.732529,
   -73.987330
@@ -7,11 +9,12 @@ const tiles = {
   OpenStreetMap: {
     url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    maxZoom: 19
+    maxZoom: 19,
+    preferCanvas: true
   }
 };
 
-const init = (L) => {
+const init = () => {
   const map = L.map('map').setView(mapCenter, 14);
 
   L.tileLayer(tiles.OpenStreetMap.url, {
