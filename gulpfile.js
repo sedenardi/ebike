@@ -10,7 +10,7 @@ const sass = require('@csstools/postcss-sass');
 // const cssnano = require('cssnano');
 
 const moduleAssets = path.resolve(__dirname, './node_modules');
-const sourceDir = path.resolve(__dirname, './src/');
+const sourceDir = path.resolve(__dirname, './map/src/');
 const distDir = path.resolve(__dirname, './public/');
 
 const entryJs = path.join(sourceDir, '/js/entry.js');
