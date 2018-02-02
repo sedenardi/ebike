@@ -1,14 +1,10 @@
 {
-  "name": "ebike/gps",
+  "name": "ebike/map",
   "version": "1.0.0",
   "private": true,
   "author": "Sanders DeNardi",
   "license": "MIT",
-  "dependencies": {
-    "decimal.js": "^9.0.1",
-    "xml2js": "^0.4.19"
-  },
-  "main": "routes.js",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sedenardi/ebike.git"
