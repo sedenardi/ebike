@@ -15,42 +15,33 @@ const init = (map, L) => {
 
     layer.bindPopup(content);
 
-    const highlight = (layer) => {
-      layer.setStyle({
-        weight: 5
-      });
-      if (!L.Browser.ie && !L.Browser.opera) {
-        layer.bringToFront();
-      }
-    };
-
-    const dehighlight = (layer) => {
-		  if (selected === null || selected._leaflet_id !== layer._leaflet_id) {
-			  geojson.resetStyle(layer);
+    const dehighlight = (l) => {
+		  if (selected === null || selected._leaflet_id !== l._leaflet_id) {
+			  geojson.resetStyle(l);
 		  }
-    };
-
-    const select = (layer) => {
-      let previous;
-		  if (selected !== null) {
-		    previous = selected;
-		  }
-      map.fitBounds(layer.getBounds());
-      selected = layer;
-      if (previous) {
-			  dehighlight(previous);
-      }
     };
 
     layer.on({
 	    mouseover: function (e) {
-	      highlight(e.target);
+        e.target.setStyle({
+          weight: 6
+        });
+        if (!L.Browser.ie && !L.Browser.opera) {
+          e.target.bringToFront();
+        }
 	    },
 	    mouseout: function (e) {
 	      dehighlight(e.target);
 	    },
       click: function (e) {
-			  select(e.target);
+        if (!selected) {
+          map.fitBounds(e.target.getBounds());
+          selected = e.target;
+        } else if (selected._leaflet_id !== e.target._leaflet_id) {
+          const prev = selected;
+          selected = e.target;
+          dehighlight(prev);
+        }
       }
     });
   };
