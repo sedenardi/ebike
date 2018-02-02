@@ -30,8 +30,10 @@
     "@mapbox/togeojson": "^0.16.0",
     "@turf/turf": "^5.1.6",
     "babel-eslint": "^8.2.1",
-    "eslint": "^4.16.0",
     "decimal.js": "^9.0.1",
+    "eslint": "^4.16.0",
+    "moment": "^2.20.1",
+    "moment-timezone": "^0.5.14",
     "xml2js": "^0.4.19",
     "xmldom": "^0.1.27"
   }

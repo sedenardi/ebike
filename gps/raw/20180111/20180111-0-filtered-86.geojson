@@ -95,7 +95,11 @@
           "2018-01-11T23:02:35Z",
           "2018-01-11T23:02:48Z"
         ],
-        "distance": 2.029918024019999
+        "distance": "2.03 mi",
+        "start": "5:48 PM",
+        "end": "6:02 PM",
+        "duration": "14 minutes",
+        "sequence": 0
       },
       "geometry": {
         "type": "LineString",
