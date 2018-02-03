@@ -11,7 +11,7 @@ const init = (map) => {
         <b>Start: </b>${feature.properties.start}<br />
         <b>End: </b>${feature.properties.end}<br />
         <b>Duration: </b>${feature.properties.duration}<br />
-        <b>Distance: </b>${feature.properties.distance}<br />
+        <b>Distance: </b>${feature.properties.length}<br />
       </p>
     `;
 

@@ -95,7 +95,7 @@
           "2018-01-11T23:02:35Z",
           "2018-01-11T23:02:48Z"
         ],
-        "distance": "2.03 mi",
+        "length": "2.03 mi",
         "start": "5:48 PM",
         "end": "6:02 PM",
         "duration": "14 minutes",
@@ -648,7 +648,7 @@
           "2018-01-11T23:25:58Z",
           "2018-01-11T23:26:13Z"
         ],
-        "distance": "2.34 mi",
+        "length": "2.34 mi",
         "start": "6:07 PM",
         "end": "6:26 PM",
         "duration": "19 minutes",
@@ -1383,7 +1383,7 @@
           "2018-01-12T00:26:44Z",
           "2018-01-12T00:26:50Z"
         ],
-        "distance": "4.63 mi",
+        "length": "4.63 mi",
         "start": "6:43 PM",
         "end": "7:26 PM",
         "duration": "43 minutes",
@@ -2718,7 +2718,7 @@
           "2018-01-12T01:31:11Z",
           "2018-01-12T01:31:15Z"
         ],
-        "distance": "7.65 mi",
+        "length": "7.65 mi",
         "start": "7:38 PM",
         "end": "8:31 PM",
         "duration": "52 minutes",
@@ -4621,7 +4621,7 @@
           "2018-01-12T02:40:03Z",
           "2018-01-12T02:40:16Z"
         ],
-        "distance": "8.28 mi",
+        "length": "8.28 mi",
         "start": "8:46 PM",
         "end": "9:40 PM",
         "duration": "53 minutes",
@@ -6284,7 +6284,7 @@
           "2018-01-12T03:11:07Z",
           "2018-01-12T03:11:12Z"
         ],
-        "distance": "2.35 mi",
+        "length": "2.35 mi",
         "start": "9:51 PM",
         "end": "10:11 PM",
         "duration": "19 minutes",

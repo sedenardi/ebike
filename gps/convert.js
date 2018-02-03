@@ -16,7 +16,7 @@ const getGPXDoc = async (filePath) => {
 const convertAndProcess = (doc, fileName) => {
   const converted = tj.gpx(doc);
   const length = turf.length(converted, { units: 'miles' });
-  converted.features[0].properties.distance = length.toFixed(2) + ' mi';
+  converted.features[0].properties.length = length.toFixed(2) + ' mi';
 
   const start = moment.tz(converted.features[0].properties.coordTimes[0], 'America/New_York');
   converted.features[0].properties.start = start.format('LT');
