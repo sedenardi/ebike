@@ -53,3 +53,16 @@ gulp.task('default', gulp.series(
     'copyHtml'
   )
 ));
+
+gulp.task('watchJs', () => {
+  gulp.watch(path.join(sourceDir, '/js/**/*'), gulp.series('buildJs'));
+});
+
+gulp.task('watchStyles', () => {
+  gulp.watch(path.join(sourceDir, '/css/**/*'), gulp.series('compileStyles'));
+});
+
+gulp.task('watch', gulp.series(
+  'default',
+  gulp.parallel('watchJs', 'watchStyles')
+));
