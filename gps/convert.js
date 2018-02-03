@@ -5,28 +5,15 @@ const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
 const tj = require('@mapbox/togeojson');
 const xmldom = require('xmldom');
-const turf = require('@turf/turf');
-const moment = require('moment-timezone');
+const processDoc = require('./process');
 
 const getGPXDoc = async (filePath) => {
   const file = await readFileAsync(filePath);
   return (new xmldom.DOMParser()).parseFromString(file.toString());
 };
 
-const convertAndProcess = (doc, fileName) => {
+const convert = (doc) => {
   const converted = tj.gpx(doc);
-  const length = turf.length(converted, { units: 'miles' });
-  converted.features[0].properties.length = length.toFixed(2) + ' mi';
-
-  const start = moment.tz(converted.features[0].properties.coordTimes[0], 'America/New_York');
-  converted.features[0].properties.start = start.format('LT');
-  const end = moment.tz(converted.features[0].properties.coordTimes[converted.features[0].properties.coordTimes.length - 1], 'America/New_York');
-  converted.features[0].properties.end = end.tz('America/New_York').format('LT');
-  converted.features[0].properties.duration = moment.duration(end - start).minutes() + ' minutes';
-
-  const seqNo = fileName.split('-')[1];
-  converted.features[0].properties.sequence = parseInt(seqNo);
-
   return converted;
 };
 
@@ -37,11 +24,12 @@ const writeGeoJSON = async (json, newFile) => {
 
 const run = async (pathDir, fileName) => {
   const filePath = path.join(pathDir, fileName);
-  const doc = await getGPXDoc(filePath);
-  const json = convertAndProcess(doc, fileName);
+  const gpx = await getGPXDoc(filePath);
+  const doc = convert(gpx);
+  processDoc(doc);
   const newFileName = fileName.split('.')[0] + '.geojson';
   const newFile = path.join(pathDir, newFileName);
-  return await writeGeoJSON(json, newFile);
+  return await writeGeoJSON(doc, newFile);
 };
 
 const runAll = async () => {

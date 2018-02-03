@@ -1,6 +1,8 @@
 /* global L */
 
-import route_0 from '../../../gps/raw/20180111/20180111-filtered.geojson';
+// import route from '../../../gps/raw/20180111/20180111-filtered.geojson';
+import route from '../../../gps/raw/20180111/20180111-2-filtered-200.geojson';
+import playback from './playback';
 
 const init = (map) => {
   let selected = null;
@@ -49,7 +51,7 @@ const init = (map) => {
     });
   };
 
-  const geojson = L.geoJSON(route_0, {
+  const geojson = L.geoJSON(route, {
     style: function () {
       return {
         weight: 4,
@@ -59,6 +61,8 @@ const init = (map) => {
     },
     onEachFeature: onEachFeature
   }).addTo(map);
+
+  playback.init(map, route);
 };
 
 export default {

@@ -19,6 +19,11 @@ gulp.task('cleanOutput', () => {
   return del([path.join(distDir, '/**/*')]);
 });
 
+gulp.task('copyImages', () => {
+  return gulp.src(path.join(moduleAssets, '/leaflet/dist/images/**/*'))
+    .pipe(gulp.dest(path.join(distDir, '/css/images')));
+});
+
 gulp.task('copyHtml', () => {
   return gulp.src(path.join(sourceDir, '/**/*.html'))
     .pipe(gulp.dest(distDir));
@@ -50,7 +55,8 @@ gulp.task('default', gulp.series(
   gulp.parallel(
     'buildJs',
     'compileStyles',
-    'copyHtml'
+    'copyHtml',
+    'copyImages'
   )
 ));
 
