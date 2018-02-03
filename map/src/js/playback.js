@@ -3,14 +3,15 @@
 import 'LeafletPlayback/dist/LeafletPlayback';
 
 const init = (map, geojson) => {
-  const onPlaybackTimeChange = (timestamp) => {
-    console.log(timestamp);
+  const onPlaybackTimeChange = (timestamp, trackIndices) => {
+
   };
 
   const playback = new L.Playback(map, geojson, onPlaybackTimeChange, {
     playControl: true,
     dateControl: true,
-    sliderControl: true
+    sliderControl: true,
+    fadeMarkersWhenStale: true
   });
 
   return playback;

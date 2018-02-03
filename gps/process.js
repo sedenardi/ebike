@@ -36,7 +36,7 @@ const processTimes = (doc) => {
 
 const processDistances = (doc) => {
   const start = doc.features[0].properties.time[0];
-  const TIME_THRESHOLD = 60 * 1000; // one minute
+  const TIME_THRESHOLD = 45 * 1000;
   doc.features[0].properties.steps = doc.features[0].geometry.coordinates.map((c, i, arr) => {
     // start of track
     if ((doc.features[0].properties.time[i] - start) < TIME_THRESHOLD) {
@@ -45,7 +45,7 @@ const processDistances = (doc) => {
     // find last index of just over TIME_THRESHOLD
     let idx;
     for (idx = i; idx >= 0; idx--) {
-      if ((doc.features[0].properties.time[i] - doc.features[0].properties.time[idx]) > TIME_THRESHOLD) {
+      if ((doc.features[0].properties.time[i] - doc.features[0].properties.time[idx]) >= TIME_THRESHOLD) {
         break;
       }
     }
@@ -55,8 +55,8 @@ const processDistances = (doc) => {
 
 const processStops = (doc) => {
   const STEP_THRESHOLD = 0.05;
-  doc.features[0].properties.stops = doc.features[0].properties.steps.map((s) => {
-    return !!s && s < STEP_THRESHOLD;
+  doc.features[0].properties.stops = doc.features[0].properties.steps.map((s, i) => {
+    return `${i} - ${(!!s && s < STEP_THRESHOLD).toString()}`;
   });
 };
 

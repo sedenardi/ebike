@@ -6,7 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "@csstools/postcss-sass": "^2.0.0",
-    "LeafletPlayback": "git+https://github.com/jdaily/LeafletPlayback.git",
+    "LeafletPlayback": "git+https://github.com/sedenardi/LeafletPlayback.git",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
