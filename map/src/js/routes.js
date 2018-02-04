@@ -1,7 +1,7 @@
 /* global L */
 
 // import route from '../../../gps/raw/20180111/20180111-filtered.geojson';
-import route from '../../../gps/processed/20180113/20180113-combined.geojson';
+import route from '../../../gps/processed/20180113/20180113-final.geojson';
 import playback from './playback';
 
 const init = (map) => {
@@ -9,11 +9,12 @@ const init = (map) => {
   const onEachFeature = (feature, layer) => {
     const content = `
       <p>
-        <h4>Route ${feature.properties.sequence + 1}</h4>
+        <h4>${feature.properties.stops.length} Deliveries</h4>
         <b>Start: </b>${feature.properties.start}<br />
         <b>End: </b>${feature.properties.end}<br />
         <b>Duration: </b>${feature.properties.duration}<br />
         <b>Distance: </b>${feature.properties.length}<br />
+        <b>Deliveries: </b>
       </p>
     `;
 

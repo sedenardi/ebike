@@ -8,6 +8,7 @@ const Decimal = require('decimal.js');
 const routes = require('./routes');
 const convert = require('./convert');
 const combine = require('./combine');
+const finalize = require('./finalize');
 
 const runs = {
   20180113: {
@@ -26,4 +27,5 @@ const runs = {
 
 // routes(runs[20180113]).catch(console.log);
 // convert(runs[20180113]).catch(console.log);
-combine(runs[20180113]).catch(console.log);
+// combine(runs[20180113]).catch(console.log);
+finalize(runs[20180113]).catch(console.log);
