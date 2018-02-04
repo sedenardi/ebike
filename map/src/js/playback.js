@@ -4,7 +4,7 @@ import 'LeafletPlayback/dist/LeafletPlayback';
 
 const init = (map, geojson) => {
   const onPlaybackTimeChange = (timestamp, trackIndices) => {
-
+    console.log(trackIndices);
   };
 
   const playback = new L.Playback(map, geojson, onPlaybackTimeChange, {

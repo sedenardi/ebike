@@ -7,24 +7,12 @@ const xml2js = require('xml2js');
 const parseStringAsync = promisify(xml2js.parseString);
 const Decimal = require('decimal.js');
 
-const date = '20180111';
-const pathDir = path.join(__dirname, `raw/${date}`);
-const fileName = 'activity_2430523815.gpx';
-const filePath = path.join(pathDir, fileName);
-
-const zoneBoundingBox = {
-  minLat: new Decimal('40.732529'),
-  minLon: new Decimal('-73.987330'),
-  maxLat: new Decimal('40.733214'),
-  maxLon: new Decimal('-73.986225')
-};
-
-const getGPX = async () => {
+const getGPX = async (filePath) => {
   const file = await readFileAsync(filePath);
   return await parseStringAsync(file);
 };
 
-const parseToCoordinateArray = (gpx) => {
+const parseToCoordinateArray = (gpx, zoneBoundingBox) => {
   const points = gpx.trk[0].trkseg[0].trkpt;
   return points.map((p, i) => {
     const ptObj = {
@@ -72,7 +60,7 @@ const getRoutes = (coords) => {
   return routes;
 };
 
-const createGPX = async (originalGPX, route, idx) => {
+const createGPX = async (originalGPX, route, idx, pathDir, date) => {
   const points = route.map((c) => {
     return {
       $: {
@@ -87,27 +75,19 @@ const createGPX = async (originalGPX, route, idx) => {
   newGPX.gpx.trk[0].trkseg[0].trkpt = points;
   const builder = new xml2js.Builder();
   const xml = builder.buildObject(newGPX);
+  idx = idx < 9 ? ('0' + idx) : ('' + idx);
   const newFile = path.join(pathDir, `${date}-${idx}.gpx`);
   await writeFileAsync(newFile, xml);
 };
 
-const run = async () => {
-  const gpx = await getGPX();
-  const coords = parseToCoordinateArray(gpx.gpx);
+module.exports = async (opts) => {
+  const gpx = await getGPX(opts.filePath);
+  const coords = parseToCoordinateArray(gpx.gpx, opts.zoneBoundingBox);
   const routes = getRoutes(coords);
   const actions = routes.map(async (r, i) => {
     console.log(`Logging route #${i} with ${r.length} points`);
-    await createGPX(gpx, r, i);
+    await createGPX(gpx, r, i, opts.pathDir, opts.date);
   });
   await Promise.all(actions);
   // console.log(coords);
 };
-
-run().catch(console.log);
-
-/*
-lat: "40.73294014669954776763916015625"
-lon: "-73.9871017076075077056884765625"
-*/
-// 40.733214, -73.987330
-// 40.732529, -73.986225

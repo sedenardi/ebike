@@ -6,6 +6,7 @@ All raw and processed GPS tracks, as well as functions for processing them.
 
 - `routes.js` - Splits a given GPX track into several routes based on entry and exit of a defined "home zone" (hardcoded for now)
 - `convert.js` - Converts, processes, and combines GPX tracks into one GeoJSON `FeatureCollection`
+- `combine.js` - Combine all GeoJSON files into one `FeatureCollection`
 
 ## TODO
 
