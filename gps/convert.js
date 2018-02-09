@@ -36,7 +36,7 @@ const run = async (pathDir, fileName, outDir) => {
 module.exports = async (opts) => {
   let files = await readdirAsync(opts.pathDir);
   files = files.filter((f) => {
-    return opts.filePath.indexOf(f) === -1;
+    return opts.filePath.indexOf(f) === -1 && f.indexOf('.gpx') > -1;
   });
   const actions = files.map(async (f) => {
     return run(opts.pathDir, f, opts.outDir);

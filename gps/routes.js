@@ -75,7 +75,7 @@ const createGPX = async (originalGPX, route, idx, pathDir, date) => {
   newGPX.gpx.trk[0].trkseg[0].trkpt = points;
   const builder = new xml2js.Builder();
   const xml = builder.buildObject(newGPX);
-  idx = idx < 9 ? ('0' + idx) : ('' + idx);
+  idx = idx < 10 ? ('0' + idx) : ('' + idx);
   const newFile = path.join(pathDir, `${date}-${idx}.gpx`);
   await writeFileAsync(newFile, xml);
 };

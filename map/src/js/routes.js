@@ -1,7 +1,7 @@
 /* global L */
 
 // import route from '../../../gps/raw/20180111/20180111-filtered.geojson';
-import route from '../../../gps/processed/20180113/20180113-final.geojson';
+import route from '../../../gps/processed/20180204/20180204-final.geojson';
 import playback from './playback';
 
 const init = (map) => {

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gpx creator="Garmin Connect" version="1.1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/11.xsd" xmlns:ns3="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns2="http://www.garmin.com/xmlschemas/GpxExtensions/v3">
+  <metadata>
+    <link href="connect.garmin.com">
+      <text>Garmin Connect</text>
+    </link>
+    <time>2018-01-18T16:27:45.000Z</time>
+  </metadata>
+  <trk>
+    <name>New York Running</name>
+    <type>running</type>
+    <trkseg>
+      <trkpt lat="40.75662262737751007080078125" lon="-73.96848256699740886688232421875">
+        <ele>10</ele>
+        <time>2018-01-19T03:45:39.000Z</time>
+      </trkpt>
+      <trkpt lat="40.7562611997127532958984375" lon="-73.96821401081979274749755859375">
+        <ele>10</ele>
+        <time>2018-01-19T03:45:40.000Z</time>
+      </trkpt>
+      <trkpt lat="40.75644182972609996795654296875" lon="-73.968209736049175262451171875">
+        <ele>10</ele>
+        <time>2018-01-19T03:45:48.000Z</time>
+      </trkpt>
+      <trkpt lat="40.7565305940806865692138671875" lon="-73.96820713765919208526611328125">
+        <ele>10</ele>
+        <time>2018-01-19T03:45:51.000Z</time>
+      </trkpt>
+      <trkpt lat="40.75645498931407928466796875" lon="-73.96782877855002880096435546875">
+        <ele>10</ele>
+        <time>2018-01-19T03:45:56.000Z</time>
+      </trkpt>
+      <trkpt lat="40.756696723401546478271484375" lon="-73.9683205448091030120849609375">
+        <ele>10</ele>
+        <time>2018-01-19T03:45:58.000Z</time>
+      </trkpt>
+      <trkpt lat="40.7566006667912006378173828125" lon="-73.9682430960237979888916015625">
+        <ele>10</ele>
+        <time>2018-01-19T03:46:08.000Z</time>
+      </trkpt>
+      <trkpt lat="40.75660653412342071533203125" lon="-73.96824468858540058135986328125">
+        <ele>10</ele>
+        <time>2018-01-19T03:46:13.000Z</time>
+      </trkpt>
+      <trkpt lat="40.75669060461223125457763671875" lon="-73.96853134967386722564697265625">
+        <ele>10</ele>
+        <time>2018-01-19T03:46:30.000Z</time>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>

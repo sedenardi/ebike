@@ -1,9 +1,15 @@
 /* global L */
 
-const mapCenter = [
-  40.732529,
-  -73.987330
-];
+const mapCenters = {
+  20180113: [
+    40.732529,
+    -73.987330
+  ],
+  20180204: [
+    40.777606,
+    -73.978637
+  ]
+};
 
 const tiles = {
   OpenStreetMap: {
@@ -20,7 +26,7 @@ const tiles = {
 
 const init = () => {
   const map = L.map('map', {
-    center: mapCenter,
+    center: mapCenters[20180204],
     zoom: 14,
     // preferCanvas: true
   });
