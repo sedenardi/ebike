@@ -61,6 +61,7 @@ const init = (map, geojson) => {
   };
 
   const playback = new L.Playback(map, geojson, onPlaybackTimeChange, {
+    tracksLayer: false,
     playControl: true,
     dateControl: true,
     sliderControl: true,

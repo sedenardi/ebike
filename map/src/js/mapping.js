@@ -1,16 +1,5 @@
 /* global L */
 
-const mapCenters = {
-  20180113: [
-    40.732529,
-    -73.987330
-  ],
-  20180204: [
-    40.777606,
-    -73.978637
-  ]
-};
-
 const tiles = {
   OpenStreetMap: {
     url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -26,7 +15,6 @@ const tiles = {
 
 const init = () => {
   const map = L.map('map', {
-    center: mapCenters[20180204],
     zoom: 14,
     // preferCanvas: true
   });
