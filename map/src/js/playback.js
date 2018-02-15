@@ -45,27 +45,57 @@ const init = (map, geojson) => {
 
   let currentStop;
   let stopControl;
-  const onPlaybackTimeChange = (timestamp) => {
+  const showStop = (timestamp) => {
     const stop = findStop(timestamp);
     if (currentStop !== stop) {
       currentStop = stop;
+      if (stopControl) {
+        console.log('leaving');
+        stopControl.remove();
+        stopControl = null;
+      }
       if (currentStop) {
         console.log('stopping');
         stopControl = new L.Control.Stop();
         stopControl.addTo(map);
-      } else {
-        console.log('leaving');
-        stopControl.remove();
       }
     }
   };
 
+  const pathLine = L.polyline([], {
+    weight: 4,
+    opacity: .6,
+    color: 'blue'
+  });
+  pathLine.addTo(map);
+  const drawPath = (trackIndices) => {
+    for (let i = 0; i < trackIndices.length; i++) {
+      if (trackIndices[i] !== undefined) {
+        const points = geojson.features[i].geometry.coordinates.slice(0, trackIndices[i] + 1).map((c) => {
+          return L.GeoJSON.coordsToLatLng(c);
+        });
+        pathLine.setLatLngs(points);
+        break;
+      }
+    }
+  };
+  global.pathLine = pathLine;
+
+  const onPlaybackTimeChange = (timestamp, trackIndices) => {
+    // console.log(trackIndices);
+    showStop(timestamp);
+    drawPath(trackIndices);
+  };
+
   const playback = new L.Playback(map, geojson, onPlaybackTimeChange, {
+    tickLen: 4000,
+    speed: .25,
     tracksLayer: false,
     playControl: true,
     dateControl: true,
     sliderControl: true,
-    fadeMarkersWhenStale: true
+    staleTime: 2 * 60 * 1000,
+    hideMarkerWhenStale: true
   });
 
   return playback;

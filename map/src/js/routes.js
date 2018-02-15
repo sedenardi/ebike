@@ -114,7 +114,7 @@ const init = (map) => {
         };
       },
       onEachFeature: onEachFeature
-    }).addTo(map);
+    });//.addTo(map);
 
     map.setView(route.center, 14);
   };
