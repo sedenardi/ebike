@@ -17,6 +17,7 @@ module.exports = async (opts) => {
     f.properties.coordTimes = undefined;
     f.properties.steps = undefined;
     f.properties.stops = stops[i];
+    f.geometry.coordinates = f.geometry.coordinates.map((c) => [c[0], c[1]]);
   });
   const newFileName = opts.date + '-final.geojson';
   const newFile = path.join(opts.outDir, newFileName);
