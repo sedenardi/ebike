@@ -87,6 +87,15 @@ const init = (map, geojson) => {
     drawPath(trackIndices);
   };
 
+  const icon = L.icon({
+    iconUrl: 'css/images/e-bike.png',
+    iconSize: [38, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+    shadowSize: [68, 95],
+    shadowAnchor: [22, 94]
+  });
+
   const playback = new L.Playback(map, geojson, onPlaybackTimeChange, {
     tickLen: 4000,
     speed: .25,
@@ -95,7 +104,12 @@ const init = (map, geojson) => {
     dateControl: true,
     sliderControl: true,
     staleTime: 2 * 60 * 1000,
-    hideMarkerWhenStale: true
+    hideMarkerWhenStale: true,
+    marker: () => {
+      return {
+        icon: icon
+      };
+    }
   });
 
   return playback;

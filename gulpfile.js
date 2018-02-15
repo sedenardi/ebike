@@ -20,7 +20,10 @@ gulp.task('cleanOutput', () => {
 });
 
 gulp.task('copyImages', () => {
-  return gulp.src(path.join(moduleAssets, '/leaflet/dist/images/**/*'))
+  return gulp.src([
+    path.join(moduleAssets, '/leaflet/dist/images/**/*'),
+    path.join(sourceDir, '/css/images/**/*')
+  ])
     .pipe(gulp.dest(path.join(distDir, '/css/images')));
 });
 
