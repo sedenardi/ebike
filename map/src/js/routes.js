@@ -2,6 +2,7 @@
 
 import route0 from '../../../gps/processed/20180113/20180113-final.geojson';
 import route2 from '../../../gps/processed/20180204/20180204-final.geojson';
+import route3 from '../../../gps/processed/20180214/20180214-final.geojson';
 import playback from './playback';
 
 L.Control.Shifts = L.Control.extend({
@@ -17,10 +18,12 @@ L.Control.Shifts = L.Control.extend({
     container.style.padding = '1em';
 
     const select = L.DomUtil.create('select', null, container);
-    const option1 = new Option('01/13 - Red House (EV)', '20180113', true);
+    const option1 = new Option('01/13 - Red House (EV)', '20180113');
     select.appendChild(option1);
-    const option2 = new Option('01/13 - Tenzen (UWS)', '20180204', true);
+    const option2 = new Option('02/04 - Tenzen (UWS)', '20180204');
     select.appendChild(option2);
+    const option3 = new Option('02/14 - Shanghai (UWS)', '20180214');
+    select.appendChild(option3);
 
     select.onchange = (event) => { this.opts.handler(event.target.value); };
 
@@ -32,11 +35,18 @@ const init = (map) => {
   const routes = {
     20180113: {
       route: route0,
-      center: [40.732529, -73.987330]
+      center: [40.732529, -73.987330],
+      zoom: 14
     },
     20180204: {
       route: route2,
-      center: [40.777606, -73.978637]
+      center: [40.777606, -73.978637],
+      zoom: 14
+    },
+    20180214: {
+      route: route3,
+      center: [40.767795, -73.959158],
+      zoom: 15
     }
   };
 
@@ -97,11 +107,6 @@ const init = (map) => {
   let currentPlayback = null;
   let currentGeoJson = null;
   const useRoute = (route) => {
-    if (currentPlayback) {
-      currentPlayback.destroy();
-    }
-    currentPlayback = playback.init(map, route.route);
-
     if (currentGeoJson) {
       currentGeoJson.remove();
     }
@@ -114,9 +119,14 @@ const init = (map) => {
         };
       },
       onEachFeature: onEachFeature
-    });//.addTo(map);
+    }).addTo(map);
 
-    map.setView(route.center, 14);
+    map.setView(route.center, route.zoom);
+
+    if (currentPlayback) {
+      currentPlayback.destroy();
+    }
+    currentPlayback = playback.init(map, route.route, currentGeoJson);
   };
 
   useRoute(routes[20180113]);

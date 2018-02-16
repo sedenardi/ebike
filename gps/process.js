@@ -57,7 +57,8 @@ const processStops = (doc) => {
   const STEP_THRESHOLD = 0.05;
   doc.features[0].properties.stops = doc.features[0].properties.steps.map((s, i) => {
     const time = doc.features[0].properties.time[i];
-    return `${i} - ${(!!s && s < STEP_THRESHOLD).toString()} - ${time}`;
+    const diff = time - (i !== 0 ? doc.features[0].properties.time[i - 1] : time);
+    return `${i} - ${(!!s && s < STEP_THRESHOLD).toString()} - ${time} - ${diff}`;
   });
 };
 

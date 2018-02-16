@@ -46,10 +46,22 @@ const runs = {
     pathDir: path.resolve(__dirname, './raw/20180204/'),
     filePath: path.resolve(__dirname, './raw/20180204/combined.gpx'),
     outDir: path.join(__dirname, 'processed/20180204/')
+  },
+  20180214: {
+    zoneBoundingBox: {
+      minLat: new Decimal('40.767795'),
+      minLon: new Decimal('-73.959158'),
+      maxLat: new Decimal('40.768608'),
+      maxLon: new Decimal('-73.958557')
+    },
+    date: 20180214,
+    pathDir: path.resolve(__dirname, './raw/20180214/'),
+    filePath: path.resolve(__dirname, './raw/20180214/combined.gpx'),
+    outDir: path.join(__dirname, 'processed/20180214/')
   }
 };
 
-const run = runs[20180204];
+const run = runs[20180214];
 
 // routes(run).catch(console.log);
 // convert(run).catch(console.log);
@@ -57,6 +69,6 @@ const run = runs[20180204];
 finalize(run).catch(console.log);
 
 /*
-40.777606, -73.978637
-40.778585, -73.977929
+40.768608, -73.958557
+40.767795, -73.959158
 */

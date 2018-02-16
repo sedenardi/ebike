@@ -21,7 +21,7 @@ L.Control.Stop = L.Control.extend({
   }
 });
 
-const init = (map, geojson) => {
+const init = (map, geojson, geoJsonLayer) => {
   let allStops = [];
   geojson.features.forEach((f) => {
     const fStops = f.properties.stops.map((s, i) => {
@@ -103,13 +103,14 @@ const init = (map, geojson) => {
     playControl: true,
     dateControl: true,
     sliderControl: true,
-    staleTime: 2 * 60 * 1000,
+    staleTime: 60 * 1000,
     hideMarkerWhenStale: true,
     marker: () => {
       return {
         icon: icon
       };
-    }
+    },
+    onStart: () => { geoJsonLayer.remove(); }
   });
 
   return playback;
