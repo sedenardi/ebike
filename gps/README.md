@@ -23,4 +23,4 @@ The final, processed files are located in their respective `processed` folder, n
 
 You can recreate the final files using `runner.js`. Each of the shifts is defined in the `runs` variable with information necessary to pass to the files used to split, process, and combine the files. Most notably is the `zoneBoundingBox` variable, with contains the coordinates used to determine whether the delivery person is at the restaurant or not.
 
-Ensure you have the at least Node.js 8 LTS installed on your system. With your command line in this directory, you can edit `runner.js` accordingly to run through any of the routes (`20180113`, `20180204`, or `20180214`), at any of the steps described in the previous section.
+Ensure you have the at least Node.js 8 LTS installed on your system. With your command line in this directory, you can edit `runner.js` accordingly to run through any of the routes (`20180113`, `20180204`, or `20180214`), at any of the steps described in the previous section. For example, if you want to rerun `routes.js`, uncomment out line 66 and comment lines 67-69 and run `node runner`. 
