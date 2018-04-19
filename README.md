@@ -9,3 +9,8 @@ This is where all the raw GPS tracks are stored, as well as all the code involve
 ### `map`
 
 Interactive presentation of the GPS tracks.
+
+To run locally:
+
+- Install all dependencies: `NODE_ENV=development npm i`
+- Start the web server & incremental build: `npm run watch`
