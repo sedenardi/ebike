@@ -20,7 +20,7 @@
     "func-style": [2, "expression", { "allowArrowFunctions": true }],
     "indent": [2, 2, {"SwitchCase": 1, "VariableDeclarator": { "var": 2, "let": 2, "const": 3}}],
     "key-spacing": [2, {"beforeColon": false, "afterColon": true}],
-    "new-cap": [2, {"capIsNew": false}],
+    "new-cap": [2, {"capIsNew": false, "newIsCapExceptions": ["modal"]}],
     "semi": [2, "always"],
     "no-undef": [2],
     "no-var": [1],
